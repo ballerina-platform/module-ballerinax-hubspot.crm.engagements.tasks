@@ -6,7 +6,7 @@ _Edition_: Swan Lake
 # Sanitation for OpenAPI specification
 
 This document records the sanitation done on top of the official OpenAPI specification from HubSpot CRM Tasks. 
-The OpenAPI specification is obtained from ["Hubspot Api Reference"](https://github.com/HubSpot/HubSpot-public-api-spec-collection/blob/main/PublicApiSpecs/CRM/Tasks/Rollouts/424/v3/tasks.json).
+The OpenAPI specification is obtained from [Hubspot Api Reference](https://github.com/HubSpot/HubSpot-public-api-spec-collection/blob/main/PublicApiSpecs/CRM/Tasks/Rollouts/424/v3/tasks.json).
 These changes are done in order to improve the overall usability, and as workarounds for some known language limitations.
 
 
