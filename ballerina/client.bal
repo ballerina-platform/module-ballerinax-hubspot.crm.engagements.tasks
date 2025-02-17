@@ -61,7 +61,7 @@ public isolated client class Client {
         return;
     }
 
-    # Archive
+    # Archive a task
     #
     # + headers - Headers to be sent with the request 
     # + return - No content 
@@ -75,7 +75,7 @@ public isolated client class Client {
         return self.clientEp->delete(resourcePath, headers = httpHeaders);
     }
 
-    # List
+    # List of the tasks
     #
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
@@ -92,7 +92,7 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
-    # Read
+    # Read a task
     #
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
@@ -109,7 +109,7 @@ public isolated client class Client {
         return self.clientEp->get(resourcePath, httpHeaders);
     }
 
-    # Update
+    # Update a task
     #
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
@@ -128,7 +128,7 @@ public isolated client class Client {
         return self.clientEp->patch(resourcePath, request, httpHeaders);
     }
 
-    # Create
+    # Create a task
     #
     # + headers - Headers to be sent with the request 
     # + return - successful operation 
@@ -232,6 +232,8 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
+    # Search for tasks
+    #
     # + headers - Headers to be sent with the request 
     # + return - successful operation 
     resource isolated function post search(PublicObjectSearchRequest payload, map<string|string[]> headers = {}) returns CollectionResponseWithTotalSimplePublicObjectForwardPaging|error {

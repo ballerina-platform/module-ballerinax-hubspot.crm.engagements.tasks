@@ -33,6 +33,7 @@
       "post" : {
         "tags" : [ "Batch" ],
         "summary" : "Read a batch of tasks by internal ID, or unique property values",
+        "description" : "Retrieves a batch of tasks based on the `inputs`, `properties`, and `propertiesWithHistory` fields. The `properties` field lists properties to return, while the `propertiesWithHistory` field includes properties with their previous values. If any specified properties are missing from the requested objects, they will be ignored.",
         "operationId" : "post-/crm/v3/objects/tasks/batch/read_read",
         "parameters" : [ {
           "name" : "archived",
@@ -98,7 +99,7 @@
     "/{taskId}" : {
       "get" : {
         "tags" : [ "Basic" ],
-        "summary" : "Read",
+        "summary" : "Read a task",
         "description" : "Read an Object identified by `{taskId}`. `{taskId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param.  Control what is returned via the `properties` query param.",
         "operationId" : "get-/crm/v3/objects/tasks/{taskId}_getById",
         "parameters" : [ {
@@ -201,7 +202,7 @@
       },
       "delete" : {
         "tags" : [ "Basic" ],
-        "summary" : "Archive",
+        "summary" : "Archive a task",
         "description" : "Move an Object identified by `{taskId}` to the recycling bin.",
         "operationId" : "delete-/crm/v3/objects/tasks/{taskId}_archive",
         "parameters" : [ {
@@ -238,7 +239,7 @@
       },
       "patch" : {
         "tags" : [ "Basic" ],
-        "summary" : "Update",
+        "summary" : "Update a task",
         "description" : "Perform a partial update of an Object identified by `{taskId}`. `{taskId}` refers to the internal object ID by default, or optionally any unique property value as specified by the `idProperty` query param. Provided property values will be overwritten. Read-only and non-existent properties will be ignored. Properties values can be cleared by passing an empty string.",
         "operationId" : "patch-/crm/v3/objects/tasks/{taskId}_update",
         "parameters" : [ {
@@ -304,6 +305,7 @@
       "post" : {
         "tags" : [ "Batch" ],
         "summary" : "Archive a batch of tasks by ID",
+        "description" : "Moves a batch of tasks identified by the `id` s specified in the `inputs` to the recycling bin.",
         "operationId" : "post-/crm/v3/objects/tasks/batch/archive_archive",
         "parameters" : [ ],
         "requestBody" : {
@@ -343,6 +345,7 @@
       "post" : {
         "tags" : [ "Batch" ],
         "summary" : "Create a batch of tasks",
+        "description" : " Create a batch of tasks using the same rules as when creating an individual task",
         "operationId" : "post-/crm/v3/objects/tasks/batch/create_create",
         "parameters" : [ ],
         "requestBody" : {
@@ -398,6 +401,7 @@
       "post" : {
         "tags" : [ "Batch" ],
         "summary" : "Update a batch of tasks by internal ID, or unique property values",
+        "description" : "update records identified by a unique property value as specified by the `idProperty` query param. `idProperty` query param refers to a property whose values are unique for the object.",
         "operationId" : "post-/crm/v3/objects/tasks/batch/update_update",
         "parameters" : [ ],
         "requestBody" : {
@@ -452,7 +456,7 @@
     "/" : {
       "get" : {
         "tags" : [ "Basic" ],
-        "summary" : "List",
+        "summary" : "List of the tasks",
         "description" : "Read a page of tasks. Control what is returned via the `properties` query param.",
         "operationId" : "get-/crm/v3/objects/tasks_getPage",
         "parameters" : [ {
@@ -558,7 +562,7 @@
       },
       "post" : {
         "tags" : [ "Basic" ],
-        "summary" : "Create",
+        "summary" : "Create a task",
         "description" : "Create a task with the given properties and return a copy of the object, including the ID. Documentation and examples for creating standard tasks is provided.",
         "operationId" : "post-/crm/v3/objects/tasks_create",
         "parameters" : [ ],
@@ -660,6 +664,8 @@
     "/search" : {
       "post" : {
         "tags" : [ "Search" ],
+        "summary" : "Search for tasks",
+        "description" : "Search for tasks based on filters, properties, sorting, and query parameters.",
         "operationId" : "post-/crm/v3/objects/tasks/search_doSearch",
         "parameters" : [ ],
         "requestBody" : {
