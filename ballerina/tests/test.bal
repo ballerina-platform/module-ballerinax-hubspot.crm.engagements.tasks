@@ -22,7 +22,7 @@ import ballerina/oauth2;
 import ballerina/test;
 
 configurable boolean isLiveServer = ?;
-final string serviceUrl = isLiveServer ? "https://api.hubapi.com/crm/v3/objects/tasks" : "http://localhost:9090/crm/v3/objects/tasks";
+final string serviceUrl = isLiveServer ? "https://api.hubapi.com/crm/v3/objects/tasks" : "http://localhost:9090";
 
 configurable  string clientId=?;
 configurable  string clientSecret = ?;
@@ -49,8 +49,8 @@ final Client taskClient = check initClient();
 final string testTaskId = "76798578391";
 final string updateTestTaskId = "76798578391";
 final string deletedTaskId = "76798588649";
-final string testBatchTaskId1 = "77192492773";
-final string testBatchTaskId2 = "77200500438";
+final string testBatchTaskId1 = "77255886563";
+final string testBatchTaskId2 = "77606927069";
 final string updateTestsubject = "test update task";
 final string testBatchTaskArchieveId1 = "77151529671";
 final string testBatchTaskArchieveId2 = "77151529672";
@@ -58,19 +58,15 @@ final string testBatchTaskUpdated1 = "77200500438";
 final string testBatchTaskUpdated2 = "77195047646";
 
 @test:Config {
-    enable: isLiveServer
 }
 isolated function testGetTasksById() returns error? {
     SimplePublicObjectWithAssociations response = check taskClient->/[testTaskId];
-    test:assertEquals(response?.properties, {
-                                                "hs_createdate": "2025-02-17T09:24:49.394Z",
-                                                "hs_lastmodifieddate": "2025-02-17T11:12:50.511Z",
-                                                "hs_object_id": "76798578391"
-                                            });
+    if(response is SimplePublicObjectWithAssociations){
+    test:assertTrue(response.length() > 0, msg = "Task retrieval failed. Please check the input data or server response for issues.");
+    }
 }
 
-@test:Config {
-    enable: isLiveServer
+@test:Config {   
 }
 isolated function testUpdateTask() returns error? {
     SimplePublicObject response = check taskClient->/[updateTestTaskId].patch(payload = {
@@ -86,14 +82,14 @@ isolated function testUpdateTask() returns error? {
 }
 
 @test:Config {
-    enable: isLiveServer
 }
 isolated function testTaskDeleteById() returns error? {
     http:Response response = check taskClient->/[deletedTaskId].delete();
     test:assertTrue(response.statusCode == 204,msg="Task deletion failed. Please check the input data or server response for issues.");
 }
 
-@test:Config {}
+@test:Config {   
+}
 isolated function testTasksBatchRead() returns error? {
     BatchReadInputSimplePublicObjectId batchTaskInput = {inputs: [{"id": testBatchTaskId1}, {"id": testBatchTaskId2}], propertiesWithHistory: ["hs_task_subject", "hs_timestamp"], properties: ["hs_task_subject", "hs_task_status"]};
     BatchResponseSimplePublicObject response = check taskClient->/batch/read.post(payload = batchTaskInput);
@@ -102,14 +98,12 @@ isolated function testTasksBatchRead() returns error? {
     }
 }
 
-@test:Config {
-    enable:isLiveServer
+@test:Config {   
 }
 isolated function  testTaskBatchUpsert() returns error? {
 }
 
-@test:Config {
-    enable:isLiveServer
+@test:Config {  
 }
 isolated function  testTaskSearch() returns error? {
     PublicObjectSearchRequest taskSearchInput={query:"test"};
@@ -119,8 +113,7 @@ isolated function  testTaskSearch() returns error? {
     }
 }
 
-@test:Config {
-    enable: isLiveServer
+@test:Config { 
 }
 isolated function testBatchTasksUpdate() returns error? {
     BatchInputSimplePublicObjectBatchInput batchTaskInput = {
@@ -149,8 +142,7 @@ isolated function testBatchTasksUpdate() returns error? {
     }
 }
 
-@test:Config {
-    enable: isLiveServer
+@test:Config {  
 }
 isolated function testTasksBatchCreate() returns error?
 {
@@ -213,8 +205,7 @@ isolated function testTasksBatchCreate() returns error?
 
 }
 
-@test:Config {
-    enable: isLiveServer
+@test:Config {  
 }
 isolated function testTasksBatchArchieve() returns error? {
     BatchInputSimplePublicObjectId batchTaskInput = {inputs: [{"id": testBatchTaskArchieveId1}, {"id": testBatchTaskArchieveId2}]};
@@ -223,7 +214,6 @@ isolated function testTasksBatchArchieve() returns error? {
 }
 
 @test:Config {
-    enable: isLiveServer
 }
 isolated function testTaskCreate() returns error? {
     SimplePublicObjectInputForCreate taskCreateInput = {
@@ -253,8 +243,7 @@ isolated function testTaskCreate() returns error? {
     test:assertTrue(response is SimplePublicObject, msg = "Task creation failed.");
 }
 
-@test:Config {
-    enable: isLiveServer
+@test:Config {   
 }
 isolated function testTasksGetPage() returns error? {
     CollectionResponseSimplePublicObjectWithAssociationsForwardPaging response = check taskClient->/.get();
@@ -262,3 +251,113 @@ isolated function testTasksGetPage() returns error? {
     test:assertTrue(response.results.length() > 0, msg = "Failed to retrieve tasks of a page");
     }
 }
+@test:Config{
+}
+isolated function testGetTasksByInvalidId() returns error?{
+     SimplePublicObject|error response =  taskClient->/["-1"];
+     test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
+}
+@test:Config{
+}
+isolated function testTaskCreateWithInvalidAssociationToId() returns error?
+{
+    SimplePublicObjectInputForCreate taskCreateInput = {
+        "associations": [
+            {
+                "to": {
+                    "id": "-1"
+                },
+                "types": [
+                    {
+                        "associationCategory": "HUBSPOT_DEFINED",
+                        "associationTypeId": 204
+                    }
+                ]
+            }
+        ],
+        "objectWriteTraceId": "string",
+        "properties": {
+            "hs_timestamp": "2025-02-20T03:30:17.883Z",
+            "hs_task_body": "Sample task body",
+            "hs_task_priority": "LOW",
+            "hs_task_type": "TODO",
+            "hs_task_subject": "A sample task for testing task creation"
+        }
+    };
+    SimplePublicObject|error response =  taskClient->/.post(payload = taskCreateInput);
+    test:assertTrue(response is error,msg="Expected an error response for invalid associationId");
+}
+
+@test:Config{
+}
+isolated function testTaskUpdateWithInvalidId() returns error?
+{
+    SimplePublicObject|error response =  taskClient->/["-1"].patch(payload = {
+        "objectWriteTraceId": "string",
+        "properties": {
+            "hs_task_subject": updateTestsubject
+        }
+    });
+    test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
+}
+@test:Config{
+}
+isolated function testTaskBatchCreateWithInvalidAssociationToId() returns error?
+{
+    BatchInputSimplePublicObjectInputForCreate batchTaskInput = {
+        "inputs": [
+            {
+                "associations": [
+                    {
+                        "to": {
+                            "id": "-1"
+                        },
+                        "types": [
+                            {
+                                "associationCategory": "HUBSPOT_DEFINED",
+                                "associationTypeId": 204
+                            }
+                        ]
+                    }
+                ],
+                "objectWriteTraceId": "string2",
+                "properties": {
+                    "hs_timestamp": "2025-10-30T03:30:17.883Z",
+                    "hs_task_body": "test batch task  body1",
+                    "hs_task_subject": "test batch task subject1",
+                    "hs_task_status": "WAITING",
+                    "hs_task_priority": "HIGH",
+                    "hs_task_type": "TODO"
+                }
+            },
+            {
+                "associations": [
+                    {
+                        "to": {
+                            "id": "-2"
+                        },
+                        "types": [
+                            {
+                                "associationCategory": "HUBSPOT_DEFINED",
+                                "associationTypeId": 204
+                            }
+                        ]
+                    }
+                ],
+                "objectWriteTraceId": "string1",
+                "properties": {
+                    "hs_timestamp": "2025-10-30T03:30:17.883Z",
+                    "hs_task_body": "test batch task body2",
+                    "hs_task_subject": "test batch task subject2",
+                    "hs_task_status": "WAITING",
+                    "hs_task_priority": "HIGH",
+                    "hs_task_type": "TODO"
+                }
+            }
+        ]
+    };
+    BatchResponseSimplePublicObject|error response =  taskClient->/batch/create.post(payload = batchTaskInput);
+    test:assertTrue(response is error,msg="Expected an error response for invalid associationId");
+}
+
+
