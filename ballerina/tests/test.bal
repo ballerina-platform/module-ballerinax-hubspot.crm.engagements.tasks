@@ -23,7 +23,6 @@ import ballerina/test;
 
 configurable boolean isLiveServer = ?;
 final string serviceUrl = isLiveServer ? "https://api.hubapi.com/crm/v3/objects/tasks" : "http://localhost:9090";
-
 configurable  string clientId=?;
 configurable  string clientSecret = ?;
 configurable string refreshToken = ?;
@@ -58,6 +57,7 @@ final string testBatchTaskUpdated1 = "77200500438";
 final string testBatchTaskUpdated2 = "77195047646";
 
 @test:Config {
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testGetTasksById() returns error? {
     SimplePublicObjectWithAssociations response = check taskClient->/[testTaskId];
@@ -66,7 +66,8 @@ isolated function testGetTasksById() returns error? {
     }
 }
 
-@test:Config {   
+@test:Config { 
+    groups: ["live_tests", "mock_tests"]  
 }
 isolated function testUpdateTask() returns error? {
     SimplePublicObject response = check taskClient->/[updateTestTaskId].patch(payload = {
@@ -82,13 +83,15 @@ isolated function testUpdateTask() returns error? {
 }
 
 @test:Config {
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testTaskDeleteById() returns error? {
     http:Response response = check taskClient->/[deletedTaskId].delete();
     test:assertTrue(response.statusCode == 204,msg="Task deletion failed. Please check the input data or server response for issues.");
 }
 
-@test:Config {   
+@test:Config { 
+    groups: ["live_tests", "mock_tests"]  
 }
 isolated function testTasksBatchRead() returns error? {
     BatchReadInputSimplePublicObjectId batchTaskInput = {inputs: [{"id": testBatchTaskId1}, {"id": testBatchTaskId2}], propertiesWithHistory: ["hs_task_subject", "hs_timestamp"], properties: ["hs_task_subject", "hs_task_status"]};
@@ -103,7 +106,8 @@ isolated function testTasksBatchRead() returns error? {
 isolated function  testTaskBatchUpsert() returns error? {
 }
 
-@test:Config {  
+@test:Config {
+    groups: ["live_tests", "mock_tests"]  
 }
 isolated function  testTaskSearch() returns error? {
     PublicObjectSearchRequest taskSearchInput={query:"test"};
@@ -114,12 +118,12 @@ isolated function  testTaskSearch() returns error? {
 }
 
 @test:Config { 
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testBatchTasksUpdate() returns error? {
     BatchInputSimplePublicObjectBatchInput batchTaskInput = {
         "inputs": [
             {
-
                 "objectWriteTraceId": "string1",
                 "id": "77200500438",
                 "properties": {
@@ -127,7 +131,6 @@ isolated function testBatchTasksUpdate() returns error? {
                 }
             },
             {
-
                 "objectWriteTraceId": "string2",
                 "id": "77195047646",
                 "properties": {
@@ -142,7 +145,8 @@ isolated function testBatchTasksUpdate() returns error? {
     }
 }
 
-@test:Config {  
+@test:Config {
+    groups: ["live_tests", "mock_tests"]  
 }
 isolated function testTasksBatchCreate() returns error?
 {
@@ -205,7 +209,8 @@ isolated function testTasksBatchCreate() returns error?
 
 }
 
-@test:Config {  
+@test:Config { 
+    groups: ["live_tests", "mock_tests"] 
 }
 isolated function testTasksBatchArchieve() returns error? {
     BatchInputSimplePublicObjectId batchTaskInput = {inputs: [{"id": testBatchTaskArchieveId1}, {"id": testBatchTaskArchieveId2}]};
@@ -214,6 +219,7 @@ isolated function testTasksBatchArchieve() returns error? {
 }
 
 @test:Config {
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testTaskCreate() returns error? {
     SimplePublicObjectInputForCreate taskCreateInput = {
@@ -243,7 +249,8 @@ isolated function testTaskCreate() returns error? {
     test:assertTrue(response is SimplePublicObject, msg = "Task creation failed.");
 }
 
-@test:Config {   
+@test:Config { 
+    groups: ["live_tests", "mock_tests"]  
 }
 isolated function testTasksGetPage() returns error? {
     CollectionResponseSimplePublicObjectWithAssociationsForwardPaging response = check taskClient->/.get();
@@ -252,12 +259,14 @@ isolated function testTasksGetPage() returns error? {
     }
 }
 @test:Config{
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testGetTasksByInvalidId() returns error?{
      SimplePublicObject|error response =  taskClient->/["-1"];
      test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
 }
 @test:Config{
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testTaskCreateWithInvalidAssociationToId() returns error?
 {
@@ -289,6 +298,7 @@ isolated function testTaskCreateWithInvalidAssociationToId() returns error?
 }
 
 @test:Config{
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testTaskUpdateWithInvalidId() returns error?
 {
@@ -301,6 +311,7 @@ isolated function testTaskUpdateWithInvalidId() returns error?
     test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
 }
 @test:Config{
+    groups: ["live_tests", "mock_tests"]
 }
 isolated function testTaskBatchCreateWithInvalidAssociationToId() returns error?
 {

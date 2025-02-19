@@ -4,8 +4,6 @@
 import ballerina/http;
 import ballerina/log;
 
-// import ballerina/lang.regexp;
-
 listener http:Listener httpListener = new (9090);
 
 http:Service mockService = service object {
@@ -16,7 +14,6 @@ http:Service mockService = service object {
     # http:DefaultStatusCodeResponse (An error occurred.)
     resource function delete [string taskId]() returns http:Response|error {
         http:Response response = new;
-        // boolean isNumeric=check taskId.isNumeric();
         response.statusCode = 204;
         return response;
     }
@@ -63,7 +60,6 @@ http:Service mockService = service object {
                     "archived": false
                 }
             ]
-
         };
     }
 
@@ -85,7 +81,6 @@ http:Service mockService = service object {
             return response;
         }
         else {
-
             SimplePublicObjectWithAssociations response = {
                 "id": taskId,
                 "properties": {
@@ -163,7 +158,6 @@ http:Service mockService = service object {
             return response;
         }
         else {
-
             SimplePublicObject response = {
                 "id": "77597502155",
                 "properties": {
@@ -510,9 +504,3 @@ function init() returns error? {
     check httpListener.attach(mockService, "/");
     check httpListener.'start();
 }
-
-// function isNumeric(string input) returns boolean {
-//     string regex = "^[0-9]+$";
-//    // return (input, regex);
-
-// }
