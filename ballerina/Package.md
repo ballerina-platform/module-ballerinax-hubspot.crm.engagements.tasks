@@ -168,9 +168,7 @@ public function main() returns error? {
             "hs_task_subject": "A sample task for example"
         }
     };
-
         hstasks:SimplePublicObject response = check hsTasksClient->/.post(payload = taskCreateInput);
-
 }
 ```
 
