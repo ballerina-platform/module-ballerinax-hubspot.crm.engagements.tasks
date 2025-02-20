@@ -68,8 +68,8 @@ isolated function testGetTasksById() returns error? {
 }
 isolated function testUpdateTask() returns error? {
     SimplePublicObject response = check taskClient->/[updateTestTaskId].patch(payload = {
-        "objectWriteTraceId": "string",
-        "properties": {
+        objectWriteTraceId: "string",
+        properties: {
             "hs_task_subject": updateTestsubject
         }
     });
@@ -119,18 +119,18 @@ isolated function  testTaskSearch() returns error? {
 }
 isolated function testBatchTasksUpdate() returns error? {
     BatchInputSimplePublicObjectBatchInput batchTaskInput = {
-        "inputs": [
+        inputs: [
             {
-                "objectWriteTraceId": "string1",
-                "id": "77200500438",
-                "properties": {
+                objectWriteTraceId: "string1",
+                id: "77200500438",
+                properties: {
                     "hs_task_subject": "Updating with test batch update1"
                 }
             },
             {
-                "objectWriteTraceId": "string2",
-                "id": "77195047646",
-                "properties": {
+                objectWriteTraceId: "string2",
+                id: "77195047646",
+                properties: {
                     "hs_task_subject": "Updating with test batch update2"
                 }
             }
@@ -148,23 +148,23 @@ isolated function testBatchTasksUpdate() returns error? {
 isolated function testTasksBatchCreate() returns error?
 {
     BatchInputSimplePublicObjectInputForCreate batchTaskInput = {
-        "inputs": [
+        inputs: [
             {
-                "associations": [
+                associations: [
                     {
-                        "types": [
+                        types: [
                             {
-                                "associationCategory": "HUBSPOT_DEFINED",
-                                "associationTypeId": 192
+                                associationCategory: "HUBSPOT_DEFINED",
+                                associationTypeId: 192
                             }
                         ],
-                        "to": {
-                            "id": "38349931215"
+                        to: {
+                            id: "38349931215"
                         }
                     }
                 ],
-                "objectWriteTraceId": "string2",
-                "properties": {
+                objectWriteTraceId: "string2",
+                properties: {
                     "hs_timestamp": "2025-10-30T03:30:17.883Z",
                     "hs_task_body": "test batch task  body1",
                     "hs_task_subject": "test batch task subject1",
@@ -174,21 +174,21 @@ isolated function testTasksBatchCreate() returns error?
                 }
             },
             {
-                "associations": [
+                associations: [
                     {
-                        "types": [
+                        types: [
                             {
-                                "associationCategory": "HUBSPOT_DEFINED",
-                                "associationTypeId": 192
+                                associationCategory: "HUBSPOT_DEFINED",
+                                associationTypeId: 192
                             }
                         ],
-                        "to": {
-                            "id": "38349931215"
+                        to: {
+                            id: "38349931215"
                         }
                     }
                 ],
-                "objectWriteTraceId": "string1",
-                "properties": {
+                objectWriteTraceId: "string1",
+                properties: {
                     "hs_timestamp": "2025-10-30T03:30:17.883Z",
                     "hs_task_body": "test batch task body2",
                     "hs_task_subject": "test batch task subject2",
@@ -210,7 +210,7 @@ isolated function testTasksBatchCreate() returns error?
     groups: ["live_tests", "mock_tests"] 
 }
 isolated function testTasksBatchArchieve() returns error? {
-    BatchInputSimplePublicObjectId batchTaskInput = {inputs: [{"id": testBatchTaskArchieveId1}, {"id": testBatchTaskArchieveId2}]};
+    BatchInputSimplePublicObjectId batchTaskInput = {inputs: [{id: testBatchTaskArchieveId1}, {id: testBatchTaskArchieveId2}]};
     http:Response response = check taskClient->/batch/archive.post(payload = batchTaskInput);
     test:assertTrue(response.statusCode == 204, msg = "Batch task archieve failed. Please check the input data or server response for issues.");
 }
@@ -220,21 +220,21 @@ isolated function testTasksBatchArchieve() returns error? {
 }
 isolated function testTaskCreate() returns error? {
     SimplePublicObjectInputForCreate taskCreateInput = {
-        "associations": [
+        associations: [
             {
-                "to": {
-                    "id": "84267202257"
+                to: {
+                    id: "84267202257"
                 },
-                "types": [
+                types: [
                     {
-                        "associationCategory": "HUBSPOT_DEFINED",
-                        "associationTypeId": 204
+                        associationCategory: "HUBSPOT_DEFINED",
+                        associationTypeId: 204
                     }
                 ]
             }
         ],
-        "objectWriteTraceId": "string",
-        "properties": {
+        objectWriteTraceId: "string",
+        properties: {
             "hs_timestamp": "2025-02-20T03:30:17.883Z",
             "hs_task_body": "Sample task body",
             "hs_task_priority": "LOW",
@@ -268,21 +268,21 @@ isolated function testGetTasksByInvalidId() returns error?{
 isolated function testTaskCreateWithInvalidAssociationToId() returns error?
 {
     SimplePublicObjectInputForCreate taskCreateInput = {
-        "associations": [
+        associations: [
             {
-                "to": {
-                    "id": "-1"
+                to: {
+                    id: "-1"
                 },
-                "types": [
+                types: [
                     {
-                        "associationCategory": "HUBSPOT_DEFINED",
-                        "associationTypeId": 204
+                        associationCategory: "HUBSPOT_DEFINED",
+                        associationTypeId: 204
                     }
                 ]
             }
         ],
-        "objectWriteTraceId": "string",
-        "properties": {
+        objectWriteTraceId: "string",
+        properties: {
             "hs_timestamp": "2025-02-20T03:30:17.883Z",
             "hs_task_body": "Sample task body",
             "hs_task_priority": "LOW",
@@ -300,8 +300,8 @@ isolated function testTaskCreateWithInvalidAssociationToId() returns error?
 isolated function testTaskUpdateWithInvalidId() returns error?
 {
     SimplePublicObject|error response =  taskClient->/["-1"].patch(payload = {
-        "objectWriteTraceId": "string",
-        "properties": {
+        objectWriteTraceId: "string",
+        properties: {
             "hs_task_subject": updateTestsubject
         }
     });
@@ -313,23 +313,23 @@ isolated function testTaskUpdateWithInvalidId() returns error?
 isolated function testTaskBatchCreateWithInvalidAssociationToId() returns error?
 {
     BatchInputSimplePublicObjectInputForCreate batchTaskInput = {
-        "inputs": [
+        inputs: [
             {
-                "associations": [
+                associations: [
                     {
-                        "to": {
-                            "id": "-1"
+                        to: {
+                            id: "-1"
                         },
-                        "types": [
+                        types: [
                             {
-                                "associationCategory": "HUBSPOT_DEFINED",
-                                "associationTypeId": 204
+                                associationCategory: "HUBSPOT_DEFINED",
+                                associationTypeId: 204
                             }
                         ]
                     }
                 ],
-                "objectWriteTraceId": "string2",
-                "properties": {
+                objectWriteTraceId: "string2",
+                properties: {
                     "hs_timestamp": "2025-10-30T03:30:17.883Z",
                     "hs_task_body": "test batch task  body1",
                     "hs_task_subject": "test batch task subject1",
@@ -339,12 +339,12 @@ isolated function testTaskBatchCreateWithInvalidAssociationToId() returns error?
                 }
             },
             {
-                "associations": [
+                associations: [
                     {
-                        "to": {
+                        to: {
                             "id": "-2"
                         },
-                        "types": [
+                        types: [
                             {
                                 "associationCategory": "HUBSPOT_DEFINED",
                                 "associationTypeId": 204
@@ -352,8 +352,8 @@ isolated function testTaskBatchCreateWithInvalidAssociationToId() returns error?
                         ]
                     }
                 ],
-                "objectWriteTraceId": "string1",
-                "properties": {
+                objectWriteTraceId: "string1",
+                properties: {
                     "hs_timestamp": "2025-10-30T03:30:17.883Z",
                     "hs_task_body": "test batch task body2",
                     "hs_task_subject": "test batch task subject2",

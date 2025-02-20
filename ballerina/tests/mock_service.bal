@@ -45,32 +45,32 @@ http:Service mockService = service object {
     resource function get .(string? after, string[]? properties, string[]? propertiesWithHistory, string[]? associations, int:Signed32 'limit = 10, boolean archived = false) returns CollectionResponseSimplePublicObjectWithAssociationsForwardPaging|error {
         return
             {
-            "results": [
+            results: [
                 {
-                    "id": "76578958019",
-                    "properties": {
+                    id: "76578958019",
+                    properties: {
                         "hs_createdate": "2025-02-17T09:24:49.394Z",
                         "hs_lastmodifieddate": "2025-02-18T08:24:36.446Z",
                         "hs_object_id": "76578958019",
                         "hs_task_subject": "Hello task 1",
                         "hubspot_owner_id": null
                     },
-                    "createdAt": "2025-02-16T12:15:45.113Z",
-                    "updatedAt": "2025-02-16T12:15:45.724Z",
-                    "archived": false
+                    createdAt: "2025-02-16T12:15:45.113Z",
+                    updatedAt: "2025-02-16T12:15:45.724Z",
+                    archived: false
                 },
                 {
-                    "id": "76798578391",
-                    "properties": {
+                    id: "76798578391",
+                    properties: {
                         "hs_createdate": "2025-02-17T09:24:49.394Z",
                         "hs_lastmodifieddate": "2025-02-17T11:12:50.511Z",
                         "hs_object_id": "76798578391",
                         "hs_task_subject": "Hello task2",
                         "hubspot_owner_id": "77367890"
                     },
-                    "createdAt": "2025-02-17T09:24:49.394Z",
-                    "updatedAt": "2025-02-17T11:12:50.511Z",
-                    "archived": false
+                    createdAt: "2025-02-17T09:24:49.394Z",
+                    updatedAt: "2025-02-17T11:12:50.511Z",
+                    archived: false
                 }
             ]
         };
@@ -95,8 +95,8 @@ http:Service mockService = service object {
         }
         else {
             SimplePublicObjectWithAssociations response = {
-                "id": taskId,
-                "properties": {
+                id: taskId,
+                properties: {
                     "hs_createdate": "2025-02-17T09:24:49.394Z",
                     "hs_lastmodifieddate": "2025-02-18T08:24:36.446Z",
                     "hs_object_id": "76798578391",
@@ -105,9 +105,9 @@ http:Service mockService = service object {
                     "hs_task_type": "TODO",
                     "hubspot_owner_id": "77367890"
                 },
-                "createdAt": "2025-02-18T07:55:49.513Z",
-                "updatedAt": "2025-02-18T07:55:50.043Z",
-                "archived": false
+                createdAt: "2025-02-18T07:55:49.513Z",
+                updatedAt: "2025-02-18T07:55:50.043Z",
+                archived: false
             };
             return response;
         }
@@ -127,8 +127,8 @@ http:Service mockService = service object {
         }
         else {
             SimplePublicObject response = {
-                "id": taskId,
-                "properties": {
+                id: taskId,
+                properties: {
                     "hs_all_owner_ids": "77367890",
                     "hs_created_by": "77367890",
                     "hs_created_by_user_id": "77367890",
@@ -148,9 +148,9 @@ http:Service mockService = service object {
                     "hubspot_owner_assigneddate": "2025-02-18T07:55:49.513Z",
                     "hubspot_owner_id": "77367890"
                 },
-                "createdAt": "2025-02-18T07:55:49.513Z",
-                "updatedAt": "2025-02-18T07:55:50.043Z",
-                "archived": false
+                createdAt: "2025-02-18T07:55:49.513Z",
+                updatedAt: "2025-02-18T07:55:50.043Z",
+                archived: false
             };
             return response;
         }
@@ -172,8 +172,8 @@ http:Service mockService = service object {
         }
         else {
             SimplePublicObject response = {
-                "id": "77597502155",
-                "properties": {
+                id: "77597502155",
+                properties: {
                     "hs_body_preview": "Sample task body",
                     "hs_body_preview_html": "<html>\n <head></head>\n <body>\n Sample task body\n </body>\n</html>",
                     "hs_body_preview_is_truncated": "false",
@@ -203,9 +203,9 @@ http:Service mockService = service object {
                     "hs_task_type": "TODO",
                     "hs_timestamp": "2025-02-20T03:30:17.883Z"
                 },
-                "createdAt": "2025-02-18T08:46:39.901Z",
-                "updatedAt": "2025-02-18T08:46:39.901Z",
-                "archived": false
+                createdAt: "2025-02-18T08:46:39.901Z",
+                updatedAt: "2025-02-18T08:46:39.901Z",
+                archived: false
             };
 
             return response;
@@ -240,11 +240,11 @@ http:Service mockService = service object {
         }
         else {
             BatchResponseSimplePublicObject response = {
-                "status": "COMPLETE",
-                "results": [
+                status: "COMPLETE",
+                results: [
                     {
-                        "id": "77255875305",
-                        "properties": {
+                        id: "77255875305",
+                        properties: {
                             "hs_body_preview": "test batch task body2",
                             "hs_body_preview_html": "<html>\n <head></head>\n <body>\n test batch task body2\n </body>\n</html>",
                             "hs_body_preview_is_truncated": "false",
@@ -274,14 +274,13 @@ http:Service mockService = service object {
                             "hs_task_type": "TODO",
                             "hs_timestamp": "2025-10-30T03:30:17.883Z"
                         },
-                        "createdAt": "2025-02-18T09:09:19.978Z",
-                        "updatedAt": "2025-02-18T09:09:19.978Z",
-                        "archived": false,
-                        "objectWriteTraceId": "string1"
+                        createdAt: "2025-02-18T09:09:19.978Z",
+                        updatedAt: "2025-02-18T09:09:19.978Z",
+                        archived: false
                     },
                     {
-                        "id": "77255875304",
-                        "properties": {
+                        id: "77255875304",
+                        properties: {
                             "hs_body_preview": "test batch task body1",
                             "hs_body_preview_html": "<html>\n <head></head>\n <body>\n test batch task body1\n </body>\n</html>",
                             "hs_body_preview_is_truncated": "false",
@@ -311,14 +310,13 @@ http:Service mockService = service object {
                             "hs_task_type": "TODO",
                             "hs_timestamp": "2025-10-30T03:30:17.883Z"
                         },
-                        "createdAt": "2025-02-18T09:09:19.978Z",
-                        "updatedAt": "2025-02-18T09:09:19.978Z",
-                        "archived": false,
-                        "objectWriteTraceId": "string2"
+                        createdAt: "2025-02-18T09:09:19.978Z",
+                        updatedAt: "2025-02-18T09:09:19.978Z",
+                        archived: false
                     }
                 ],
-                "startedAt": "2025-02-18T09:09:19.945Z",
-                "completedAt": "2025-02-18T09:09:20.262Z"
+                startedAt: "2025-02-18T09:09:19.945Z",
+                completedAt: "2025-02-18T09:09:20.262Z"
             };
             return response;
         }
@@ -333,18 +331,18 @@ http:Service mockService = service object {
     # http:DefaultStatusCodeResponse (An error occurred.)
     resource function post batch/read(@http:Payload BatchReadInputSimplePublicObjectId payload, boolean archived = false) returns BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors|error {
         BatchResponseSimplePublicObject response = {
-            "status": "COMPLETE",
-            "results": [
+            status: "COMPLETE",
+            results: [
                 {
-                    "id": "77255886563",
-                    "properties": {
+                    id: "77255886563",
+                    properties: {
                         "hs_createdate": "2025-02-18T09:36:22.519Z",
                         "hs_lastmodifieddate": "2025-02-18T09:36:23.070Z",
                         "hs_object_id": "77255886563",
                         "hs_task_status": "NOT_STARTED",
                         "hs_task_subject": "Batch task1"
                     },
-                    "propertiesWithHistory": {
+                    propertiesWithHistory: {
                         "hs_task_body": [
                             {
                                 "value": "Sample task body",
@@ -362,20 +360,20 @@ http:Service mockService = service object {
                             }
                         ]
                     },
-                    "createdAt": "2025-02-18T09:36:22.519Z",
-                    "updatedAt": "2025-02-18T09:36:23.070Z",
-                    "archived": false
+                    createdAt: "2025-02-18T09:36:22.519Z",
+                    updatedAt: "2025-02-18T09:36:23.070Z",
+                    archived: false
                 },
                 {
-                    "id": "77606927069",
-                    "properties": {
+                    id: "77606927069",
+                    properties: {
                         "hs_createdate": "2025-02-18T09:36:57.705Z",
                         "hs_lastmodifieddate": "2025-02-18T09:36:58.197Z",
                         "hs_object_id": "77606927069",
                         "hs_task_status": "NOT_STARTED",
                         "hs_task_subject": "Batch task2"
                     },
-                    "propertiesWithHistory": {
+                    propertiesWithHistory: {
                         "hs_task_body": [
                             {
                                 "value": "Sample task body",
@@ -393,13 +391,13 @@ http:Service mockService = service object {
                             }
                         ]
                     },
-                    "createdAt": "2025-02-18T09:36:57.705Z",
-                    "updatedAt": "2025-02-18T09:36:58.197Z",
-                    "archived": false
+                    createdAt: "2025-02-18T09:36:57.705Z",
+                    updatedAt: "2025-02-18T09:36:58.197Z",
+                    archived: false
                 }
             ],
-            "startedAt": "2025-02-18T09:38:53.032Z",
-            "completedAt": "2025-02-18T09:38:53.039Z"
+            startedAt: "2025-02-18T09:38:53.032Z",
+            completedAt: "2025-02-18T09:38:53.039Z"
         };
         return response;
     }
@@ -412,11 +410,11 @@ http:Service mockService = service object {
     # http:DefaultStatusCodeResponse (An error occurred.)
     resource function post batch/update(@http:Payload BatchInputSimplePublicObjectBatchInput payload) returns BatchResponseSimplePublicObject|BatchResponseSimplePublicObjectWithErrors|error {
         BatchResponseSimplePublicObject response = {
-            "status": "COMPLETE",
-            "results": [
+            status: "COMPLETE",
+            results: [
                 {
-                    "id": "77195047646",
-                    "properties": {
+                    id: "77195047646",
+                    properties: {
                         "hs_createdate": "2025-02-17T17:13:54.986Z",
                         "hs_lastmodifieddate": "2025-02-17T17:30:25.243Z",
                         "hs_object_id": "77195047646",
@@ -427,14 +425,13 @@ http:Service mockService = service object {
                         "hs_pipeline_stage": "dd5826e4-c976-4654-a527-b59ada542e52",
                         "hs_task_subject": "Updating with test batch update2"
                     },
-                    "createdAt": "2025-02-17T17:13:54.986Z",
-                    "updatedAt": "2025-02-17T17:30:25.243Z",
-                    "archived": false,
-                    "objectWriteTraceId": "string2"
+                    createdAt: "2025-02-17T17:13:54.986Z",
+                    updatedAt: "2025-02-17T17:30:25.243Z",
+                    archived: false
                 },
                 {
-                    "id": "77200500438",
-                    "properties": {
+                    id: "77200500438",
+                    properties: {
                         "hs_createdate": "2025-02-17T16:38:28.765Z",
                         "hs_lastmodifieddate": "2025-02-17T17:30:25.244Z",
                         "hs_object_id": "77200500438",
@@ -445,14 +442,14 @@ http:Service mockService = service object {
                         "hs_pipeline_stage": "dd5826e4-c976-4654-a527-b59ada542e52",
                         "hs_task_subject": "Updating with test batch update1"
                     },
-                    "createdAt": "2025-02-17T16:38:28.765Z",
-                    "updatedAt": "2025-02-17T17:30:25.244Z",
-                    "archived": false,
-                    "objectWriteTraceId": "string1"
+                    createdAt: "2025-02-17T16:38:28.765Z",
+                    updatedAt: "2025-02-17T17:30:25.244Z",
+                    archived: false
+                    
                 }
             ],
-            "startedAt": "2025-02-18T09:47:19.539Z",
-            "completedAt": "2025-02-18T09:47:19.621Z"
+            startedAt: "2025-02-18T09:47:19.539Z",
+            completedAt: "2025-02-18T09:47:19.621Z"
         };
         return response;
     }
@@ -473,33 +470,33 @@ http:Service mockService = service object {
     # http:DefaultStatusCodeResponse (An error occurred.)
     resource function post search(@http:Payload PublicObjectSearchRequest payload) returns CollectionResponseWithTotalSimplePublicObjectForwardPaging|error {
         CollectionResponseWithTotalSimplePublicObjectForwardPaging response = {
-            "total": 2,
-            "results": [
+            total: 2,
+            results: [
                 {
-                    "id": "76578958019",
-                    "properties": {
+                    id: "76578958019",
+                    properties: {
                         "hs_createdate": "2025-02-16T12:15:45.113Z",
                         "hs_lastmodifieddate": "2025-02-16T12:15:45.724Z",
                         "hs_object_id": "76578958019",
                         "hs_task_body": "a task without associations",
                         "hs_task_status": "NOT_STARTED"
                     },
-                    "createdAt": "2025-02-16T12:15:45.113Z",
-                    "updatedAt": "2025-02-16T12:15:45.724Z",
-                    "archived": false
+                    createdAt: "2025-02-16T12:15:45.113Z",
+                    updatedAt: "2025-02-16T12:15:45.724Z",
+                    archived: false
                 },
                 {
-                    "id": "76798585554",
-                    "properties": {
+                    id: "76798585554",
+                    properties: {
                         "hs_createdate": "2025-02-17T10:52:27.816Z",
                         "hs_lastmodifieddate": "2025-02-17T10:52:28.299Z",
                         "hs_object_id": "76798585554",
                         "hs_task_body": "<div style=\"\" dir=\"auto\" data-top-level=\"true\"><br></div>",
                         "hs_task_status": "NOT_STARTED"
                     },
-                    "createdAt": "2025-02-17T10:52:27.816Z",
-                    "updatedAt": "2025-02-17T10:52:28.299Z",
-                    "archived": false
+                    createdAt: "2025-02-17T10:52:27.816Z",
+                    updatedAt: "2025-02-17T10:52:28.299Z",
+                    archived: false
                 }
             ]
         };
