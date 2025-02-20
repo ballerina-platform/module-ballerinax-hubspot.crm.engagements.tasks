@@ -38,8 +38,8 @@ public function main() returns error? {
     string? currentStatus = response.properties["hs_task_status"];
     if currentStatus != "COMPLETED" {
         hstasks:SimplePublicObject responseUpdated = check hubspot->/[taskIdToUpdate].patch(payload = {
-            "objectWriteTraceId": "string",
-            "properties": {
+            objectWriteTraceId: "string",
+            properties: {
                 "hs_task_status": "COMPLETED"
             }
         });
