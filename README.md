@@ -114,7 +114,7 @@ To use the `HubSpot Engagements Tasks connector` in your Ballerina application, 
 
 ### Step 1: Import the module
 
-Import the `hubspot.properties` module and `oauth2` module.
+Import the `hubspot.crm.engagements.tasks` module and `oauth2` module.
 
 ```ballerina
 import ballerinax/hubspot.crm.engagements.tasks as hstasks;
