@@ -98,11 +98,6 @@ isolated function testTasksBatchRead() returns error? {
     }
 }
 
-@test:Config {   
-}
-isolated function  testTaskBatchUpsert() returns error? {
-}
-
 @test:Config {
     groups: ["live_tests", "mock_tests"]  
 }
@@ -255,6 +250,7 @@ isolated function testTasksGetPage() returns error? {
     test:assertTrue(response.results.length() > 0, msg = "Failed to retrieve tasks of a page");
     }
 }
+
 @test:Config{
     groups: ["live_tests", "mock_tests"]
 }
@@ -262,6 +258,7 @@ isolated function testGetTasksByInvalidId() returns error?{
      SimplePublicObject|error response =  taskClient->/["-1"];
      test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
 }
+
 @test:Config{
     groups: ["live_tests", "mock_tests"]
 }
@@ -307,6 +304,7 @@ isolated function testTaskUpdateWithInvalidId() returns error?
     });
     test:assertTrue(response is error,msg="Expected an error response for invalid taskId");
 }
+
 @test:Config{
     groups: ["live_tests", "mock_tests"]
 }
