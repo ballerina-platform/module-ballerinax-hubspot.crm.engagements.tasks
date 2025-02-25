@@ -1,4 +1,4 @@
-# [Task Search, Assignment, or Extension in HubSpot](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/assign-or-extend-a-task)
+# Task management in HubSpot CRM
 
 This example demonstrates how to use the HubSpot CRM Tasks connector to manage tasks efficiently. It first searches for a task by its subject to check if it already exists. If no matching task is found, a new task is created with the given subject. However, if the task is already available, it is extended by updating relevant details such as the due date or priority.
 
