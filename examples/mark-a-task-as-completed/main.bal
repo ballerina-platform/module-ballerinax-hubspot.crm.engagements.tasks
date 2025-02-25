@@ -43,8 +43,8 @@ public function main() returns error? {
                 "hs_task_status": "COMPLETED"
             }
         });
-       io:println("Task was in '", currentStatus, "' status and is now updated to 'Completed' status.");
-       io:println("Updated Task Details: ", responseUpdated);
+        io:println("Task was in '", currentStatus, "' status and is now updated to 'Completed' status.");
+        io:println("Updated Task Details: ", responseUpdated);
     } else {
         io:println("Task is already completed");
     }
