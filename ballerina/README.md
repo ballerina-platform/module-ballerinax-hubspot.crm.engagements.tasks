@@ -8,17 +8,17 @@ The `ballerinax/module-ballerinax-hubspot.crm.engagements.tasks` connector offer
 
 To use the HubSpot Engagements Tasks connector, you must have access to the HubSpot API through a HubSpot developer account and a HubSpot App under it. Therefore, you need to register for a developer account at HubSpot if you don't have one already.
 
-### Step 1: Create/Login to a HubSpot Developer Account
+### Step 1: Login to a HubSpot developer account
 
 If you have an account already, go to the [HubSpot developer portal](https://app.hubspot.com/)
 
 If you don't have a HubSpot Developer Account you can sign up to a free account [here](https://developers.hubspot.com/get-started)
 
-### Step 2 (Optional): Create a Developer Test Account under your account
+### Step 2: Create a developer test account (Optional)
 
 Within app developer accounts, you can create [developer test accounts](https://developers.hubspot.com/beta-docs/getting-started/account-types#developer-test-accounts) to test apps and integrations without affecting any real HubSpot data.
 
-**Note: These accounts are only for development and testing purposes. In production you should not use Developer Test Accounts.**
+**Note: These accounts are only for development and testing purposes. In production you should not use developer test accounts.**
 
 1. Go to Test Account section from the left sidebar.
    ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/test_acc_1.png)
@@ -29,14 +29,14 @@ Within app developer accounts, you can create [developer test accounts](https://
 3. In the dialogue box, give a name to your test account and click create.
    ![Hubspot developer testacc3](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/test_acc_3.png)
 
-### Step 3: Create a HubSpot App under your account
+### Step 3: Create a HubSpot app under your account
 
 1. In your developer account, navigate to the "Apps" section. Click on "Create App"
    ![Hubspot app creation 1](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/create_app_1.png)
 
 2. Provide the necessary details, including the app name and description.
 
-### Step 4: Configure the Authentication Flow
+### Step 4: Configure the authentication flow
 
 1. Move to the Auth Tab.
    ![Hubspot app creation 2](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/create_app_2.png)
@@ -47,12 +47,12 @@ Within app developer accounts, you can create [developer test accounts](https://
 3. Add your Redirect URI in the relevant section. You can also use localhost addresses for local development purposes. Click Create App.
    ![Hubspot create app final](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/create_app_final.png)
 
-### Step 5: Get your Client ID and Client Secret
+### Step 5: Get your client id and client secret
 
 - Navigate to the Auth section of your app. Make sure to save the provided Client ID and Client Secret.
   ![Hubspot get credentials](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/main/docs/resources/get_credentials.png)
 
-### Step 6: Setup Authentication Flow
+### Step 6: Setup authentication flow
 
 Before proceeding with the Quickstart, ensure you have obtained the Access Token using the following steps:
 
@@ -172,7 +172,7 @@ public function main() returns error? {
 }
 ```
 
-#### Run the Ballerina application
+#### Run the ballerina application
 
 ```bash
 bal run
@@ -180,5 +180,5 @@ bal run
 
 ## Examples
 
-The `HubSpot CRM Tasks` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/), covering the following use cases:
+The `HubSpot CRM Tasks` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples), covering the following use cases:
 
