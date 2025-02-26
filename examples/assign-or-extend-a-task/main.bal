@@ -47,7 +47,6 @@ public function main() returns error? {
                 ]
             }
         ],
-        objectWriteTraceId: "string",
         properties: {
             "hs_timestamp": "2025-02-20T03:30:17.883Z",
             "hs_task_body": "Sample task body",
@@ -58,18 +57,15 @@ public function main() returns error? {
     };
     //Check if the task exists by searching the task subject
     hstasks:PublicObjectSearchRequest taskSearchInput = {query: newTask.properties["hs_task_subject"]};
-    hstasks:CollectionResponseWithTotalSimplePublicObjectForwardPaging response = check hubspot->/search.post(payload = taskSearchInput);
-    if response.total == 0
-    {
+    hstasks:CollectionResponseWithTotalSimplePublicObjectForwardPaging response = check hubspot->/search.post(taskSearchInput);
+    if response.total == 0{
         io:println("Task does not exist. Creating a new task.");
-        hstasks:SimplePublicObject CreatedResponse = check hubspot->/.post(payload = newTask);
+        hstasks:SimplePublicObject CreatedResponse = check hubspot->/.post(newTask);
         io:println("A new task has been created. Task Details: ", CreatedResponse);
-
     }
     else {
         // Update the task's due date to extend the deadline
-        hstasks:SimplePublicObject responseUpdated = check hubspot->/[response.results[0].id].patch(payload = {
-            objectWriteTraceId: "string",
+        hstasks:SimplePublicObject responseUpdated = check hubspot->/[response.results[0].id].patch({
             properties: {
                 "hs_timestamp": "2025-03-25T02:30:00Z"
             }

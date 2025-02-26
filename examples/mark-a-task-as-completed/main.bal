@@ -31,19 +31,18 @@ hstasks:OAuth2RefreshTokenGrantConfig auth = {
 };
 // Create a new HubSpot owners client using the OAuth config.
 final hstasks:Client hubspot = check new ({auth});
-final string taskIdToUpdate = "78340683468";
+const string taskIdToUpdate = "78340683468";
 
 public function main() returns error? {
     hstasks:SimplePublicObjectWithAssociations response = check hubspot->/[taskIdToUpdate].get(properties = ["hs_task_subject", "hs_task_status"]);
     string? currentStatus = response.properties["hs_task_status"];
     if currentStatus != "COMPLETED" {
-        hstasks:SimplePublicObject responseUpdated = check hubspot->/[taskIdToUpdate].patch(payload = {
-            objectWriteTraceId: "string",
+        hstasks:SimplePublicObject responseUpdated = check hubspot->/[taskIdToUpdate].patch( {
             properties: {
                 "hs_task_status": "COMPLETED"
             }
         });
-        io:println("Task was in '", currentStatus, "' status and is now updated to 'Completed' status.");
+        io:println(string `Task was in '${currentStatus ?: ""}' status and is now updated to 'Completed' status.`);
         io:println("Updated Task Details: ", responseUpdated);
     } else {
         io:println("Task is already completed");
