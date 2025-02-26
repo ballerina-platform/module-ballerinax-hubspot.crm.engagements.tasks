@@ -1,6 +1,6 @@
 ## Overview
 
-[HubSpot](`https://www.hubspot.com/`) is an AI-powered customer relationship management (CRM) platform.
+[HubSpot](https://www.hubspot.com/) is an AI-powered customer relationship management (CRM) platform.
 
 The `ballerinax/module-ballerinax-hubspot.crm.engagements.tasks` connector offers APIs to connect and interact with the [Hubspot Engagements Tasks API](https://developers.hubspot.com/docs/guides/api/crm/engagements/tasks) endpoints, specifically based on the HubSpot REST API.
 
