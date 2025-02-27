@@ -1,10 +1,6 @@
-# Examples
+# Task completion and status change in HubSpot CRM
 
-The `ballerinax/hubspot.crm.engagements.tasks` connector provides practical examples illustrating usage in various scenarios.
-
-1. [Task management in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/assign-or-extend-a-task) - This example searches for a task in HubSpot CRM by its subject, creating a new one if none exists or updating details like the due date and priority if found.
-
-2. [Task completion and status change in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/mark-a-task-as-completed) - This example checks a task's status in HubSpot CRM and updates it to "Completed" if necessary, ensuring efficient task management.
+This example demonstrates how to use the HubSpot CRM Tasks connector to check the status of a task assigned to a specific owner. It first retrieves the task details based on the task ID and checks its current status. If the status is not "Completed," the task owner updates it to "Completed." This process allows task owners to manage and track their tasks effectively, ensuring tasks are marked as completed when done, directly from the HubSpot CRM.
 
 ## Prerequisites
 
