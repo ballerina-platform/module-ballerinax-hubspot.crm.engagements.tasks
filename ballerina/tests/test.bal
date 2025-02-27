@@ -18,11 +18,11 @@ import ballerina/http;
 import ballerina/oauth2;
 import ballerina/test;
 
-configurable boolean isLiveServer = ?;
+configurable boolean isLiveServer = false;
 final string serviceUrl = isLiveServer ? "https://api.hubapi.com/crm/v3/objects/tasks" : "http://localhost:9090";
-configurable  string clientId=?;
-configurable  string clientSecret = ?;
-configurable string refreshToken = ?;
+configurable  string clientId="client_id";
+configurable  string clientSecret = "client_secret";
+configurable string refreshToken = "refresh_token";
 
 isolated function initClient() returns Client|error {
     if isLiveServer {
