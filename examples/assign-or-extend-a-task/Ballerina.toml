@@ -3,6 +3,3 @@ org = "wso2"
 name = "assign_or_extend_a_task"
 version = "0.1.0"
 distribution = "2201.11.0"
-
-
-
