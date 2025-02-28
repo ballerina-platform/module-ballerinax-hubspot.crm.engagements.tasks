@@ -19,7 +19,6 @@ import ballerina/oauth2;
 import ballerina/test;
 
 configurable boolean isLiveServer = false;
-final string serviceUrl = isLiveServer ? "https://api.hubapi.com/crm/v3/objects/tasks" : "http://localhost:9090";
 configurable  string clientId="client_id";
 configurable  string clientSecret = "client_secret";
 configurable string refreshToken = "refresh_token";
@@ -32,13 +31,13 @@ isolated function initClient() returns Client|error {
             refreshToken: refreshToken,
             credentialBearer: oauth2:POST_BODY_BEARER
         };
-        return check new ({auth}, serviceUrl);
+        return check new ({auth}, "https://api.hubapi.com/crm/v3/objects/tasks");
     }
     return check new ({
         auth: {
             token: "test-token"
         }
-    }, serviceUrl);
+    }, "http://localhost:9090");
 }
 
 final Client taskClient = check initClient();
