@@ -18,7 +18,7 @@ If you don't have a HubSpot Developer Account you can sign up to a free account 
 
 Within app developer accounts, you can create [developer test accounts](https://developers.hubspot.com/beta-docs/getting-started/account-types#developer-test-accounts) to test apps and integrations without affecting any real HubSpot data.
 
-**Note: These accounts are only for development and testing purposes. In production you should not use developer test accounts.**
+>**Note:** These accounts are only for development and testing purposes. In production you should not use developer test accounts.
 
 1. Go to Test Account section from the left sidebar.
    ![Hubspot developer portal](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/refs/heads/main/docs/resources/test_acc_1.png)
@@ -41,7 +41,9 @@ Within app developer accounts, you can create [developer test accounts](https://
 1. Move to the Auth Tab.
    ![Hubspot app creation 2](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/refs/heads/main/docs/resources/create_app_2.png)
 
-2. In the Scopes section, add necessary scopes for your app using the "Add new scope" button.
+2. In the Scopes section, add the necessary scopes for your app using the "Add new scope" button:  
+   - `crm.objects.contacts.read`  
+   - `crm.objects.contacts.write`
    ![Hubspot set scope](https://raw.githubusercontent.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/refs/heads/main/docs/resources/set_scope.png)
 
 3. Add your Redirect URI in the relevant section. You can also use localhost addresses for local development purposes. Click Create App.
@@ -108,8 +110,8 @@ To use the `HubSpot Engagements Tasks connector` in your Ballerina application, 
 Import the `hubspot.crm.engagements.tasks` module and `oauth2` module.
 
 ```ballerina
-import ballerinax/hubspot.crm.engagements.tasks as hstasks;
 import ballerina/oauth2;
+import ballerinax/hubspot.crm.engagements.tasks as hstasks;
 ```
 
 ### Step 2: Instantiate a new connector
@@ -130,7 +132,7 @@ import ballerina/oauth2;
         }
     };
 
-    final hstasks:Client hsTasksClient = check new (config);
+    final hstasks:Client hsTasks = check new (config);
     ```
 
 2. Create a `Config.toml` file and, configure the obtained credentials in the above steps as follows:
@@ -168,7 +170,7 @@ public function main() returns error? {
             "hs_task_subject": "A sample task for example"
         }
     };
-        hstasks:SimplePublicObject response = check hsTasksClient->/.post(payload = taskCreateInput);
+        hstasks:SimplePublicObject response = check hsTasks->/.post(payload = taskCreateInput);
 }
 ```
 
@@ -182,3 +184,6 @@ bal run
 
 The `HubSpot CRM Tasks` connector provides practical examples illustrating usage in various scenarios. Explore these [examples](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples), covering the following use cases:
 
+1. [Task management in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/assign-or-extend-a-task) - This example searches for a task in HubSpot CRM by its subject, creating a new one if none exists or updating details like the due date and priority if found.
+
+2. [Task completion and status change in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/mark-a-task-as-completed) - This example checks a task's status in HubSpot CRM and updates it to "Completed" if necessary, ensuring efficient task management.
