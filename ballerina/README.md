@@ -2,7 +2,14 @@
 
 [HubSpot](https://www.hubspot.com/) is an AI-powered customer relationship management (CRM) platform.
 
-The `ballerinax/module-ballerinax-hubspot.crm.engagements.tasks` connector offers APIs to connect and interact with the [Hubspot Engagements Tasks API](https://developers.hubspot.com/docs/guides/api/crm/engagements/tasks) endpoints, specifically based on the HubSpot REST API.
+The HubSpot connector offers APIs to connect and interact with the [Hubspot Engagements Tasks API](https://developers.hubspot.com/docs/guides/api/crm/engagements/tasks) endpoints, specifically based on the HubSpot REST API.
+
+### Key Features
+
+- Create, read, update, and delete task engagement records
+- Batch operations for bulk task management
+- Search tasks with filtering support
+- Manage task assignments and associations with CRM objects
 
 ## Setup guide
 
