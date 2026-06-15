@@ -2,13 +2,13 @@
 
 [![Build](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/actions/workflows/ci.yml/badge.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/actions/workflows/ci.yml)
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks.svg)](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.engagements.tasks.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%hubspot.crm.engagements.tasks)
+[![GitHub Issues](https://img.shields.io/github/issues/ballerina-platform/ballerina-library/module/hubspot.crm.engagements.tasks.svg?label=Open%20Issues)](https://github.com/ballerina-platform/ballerina-library/labels/module%2Fhubspot.crm.engagements.tasks)
 
 ## Overview
 
 [HubSpot](https://www.hubspot.com/) is an AI-powered customer relationship management (CRM) platform.
 
-The `ballerinax/module-ballerinax-hubspot.crm.engagements.tasks` connector offers APIs to connect and interact with the [Hubspot Engagements Tasks API](https://developers.hubspot.com/docs/guides/api/crm/engagements/tasks) endpoints, specifically based on the HubSpot REST API.
+The `ballerinax/module-ballerinax-hubspot.crm.engagements.tasks` connector offers APIs to connect and interact with the [HubSpot Engagements Tasks API](https://developers.hubspot.com/docs/guides/api/crm/engagements/tasks) endpoints, specifically based on the HubSpot REST API.
 
 ## Setup guide
 
@@ -194,8 +194,6 @@ The `HubSpot CRM Tasks` connector provides practical examples illustrating usage
 1. [Task management in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/assign-or-extend-a-task) - This example searches for a task in HubSpot CRM by its subject, creating a new one if none exists or updating details like the due date and priority if found.
 
 2. [Task completion and status change in HubSpot CRM](https://github.com/ballerina-platform/module-ballerinax-hubspot.crm.engagements.tasks/tree/main/examples/mark-a-task-as-completed) - This example checks a task's status in HubSpot CRM and updates it to "Completed" if necessary, ensuring efficient task management.
-
-[//]: # (TODO: Add examples)
 
 ## Build from the source
 
