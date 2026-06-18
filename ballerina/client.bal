@@ -39,7 +39,7 @@ public isolated client class Client {
         self.clientEp = check new (serviceUrl, httpClientConfig);
     }
 
-    # Read a batch of tasks by internal ID, or unique property values
+    # Read tasks by ID or property
     #
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
@@ -60,6 +60,7 @@ public isolated client class Client {
 
     # Read a task
     #
+    # + taskId - The unique identifier of the task to retrieve.
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - successful operation 
@@ -77,6 +78,7 @@ public isolated client class Client {
 
     # Archive a task
     #
+    # + taskId - The unique identifier of the task to archive.
     # + headers - Headers to be sent with the request 
     # + return - No content 
     resource isolated function delete [string taskId](map<string|string[]> headers = {}) returns error? {
@@ -91,6 +93,7 @@ public isolated client class Client {
 
     # Update a task
     #
+    # + taskId - The unique identifier of the task to update.
     # + headers - Headers to be sent with the request 
     # + queries - Queries to be sent with the request 
     # + return - successful operation 
@@ -142,7 +145,7 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
-    # Update a batch of tasks by internal ID, or unique property values
+    # Update tasks by ID or property
     #
     # + headers - Headers to be sent with the request 
     # + return - successful operation 
@@ -193,7 +196,7 @@ public isolated client class Client {
         return self.clientEp->post(resourcePath, request, httpHeaders);
     }
 
-    # Create or update a batch of tasks by unique property values
+    # Upsert a batch of tasks
     #
     # + headers - Headers to be sent with the request 
     # + return - successful operation 
